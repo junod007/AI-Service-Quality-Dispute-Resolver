@@ -1,67 +1,65 @@
 # AI Service Quality Dispute Resolver
 
-An AI-powered dispute resolution Intelligent Contract built with [GenLayer](https://genlayer.com/).
+An AI-powered service quality dispute resolution Intelligent Contract built with [GenLayer](https://genlayer.com/).
 
 ## Overview
 
-This project explores how AI can help evaluate service-quality disputes between clients and service providers using evidence submitted by both parties.
+This project demonstrates how an Intelligent Contract can help resolve disputes between a client and a service provider by evaluating evidence submitted by both parties.
 
-The contract compares the agreed service requirements with the available evidence and produces a resolution with a factual explanation.
+The contract supports a dispute workflow in which the client opens a dispute, both parties submit their own evidence, and the contract uses AI-based adjudication to produce a resolution.
 
-## Key Features
+## Features
 
-* Client and provider evidence submission
-* Service requirement evaluation
-* AI-assisted dispute resolution
-* Three possible outcomes:
+* Client-authorized dispute opening
+* Separate client and provider evidence submission
+* Evidence submission restricted to the corresponding party
+* AI-assisted dispute evaluation
+* Explicit `INCONCLUSIVE` outcome when the evidence is insufficient
+* Finalized dispute outcomes cannot be reset or overwritten through the dispute workflow
 
-  * `CLIENT_FAVORED`
-  * `PROVIDER_FAVORED`
-  * `INCONCLUSIVE`
-* On-chain dispute state tracking
-* Client-controlled dispute reset
+## Dispute Workflow
 
-## How It Works
-
-1. The client and provider are identified in the contract.
-2. The client submits evidence describing the alleged service failure.
-3. The provider submits evidence describing their performance.
-4. The dispute is evaluated using GenLayer's nondeterministic execution and comparative prompting.
+1. The client opens a dispute.
+2. The client submits evidence.
+3. The provider submits evidence.
+4. The contract evaluates the submitted evidence.
 5. The contract records the resolution and reasoning.
 
-## Resolution Logic
+## Evidence & Demo
 
-| Decision           | Meaning                                                                                |
-| ------------------ | -------------------------------------------------------------------------------------- |
-| `CLIENT_FAVORED`   | Evidence reasonably indicates that the provider failed to meet the agreed requirement. |
-| `PROVIDER_FAVORED` | Evidence reasonably indicates that the provider satisfied the agreed requirement.      |
-| `INCONCLUSIVE`     | Evidence is insufficient, contradictory, or cannot establish either conclusion.        |
+### 1. Contract Deployed
 
-The contract is designed not to assume that either party is truthful and not to treat unsupported claims as proof.
+![Contract deployed](screenshots/01-contract-deployed.png)
 
-## Contract Methods
+### 2. Dispute Opened
 
-* `open_dispute` — Submit client and provider evidence and open a dispute.
-* `resolve_dispute` — Evaluate the dispute and record the outcome.
-* `reset_dispute` — Allow the client to reset the dispute.
-* `get_dispute_state` — Read the current dispute state.
+![Dispute opened](screenshots/02-dispute-opened.png)
 
-## Technology
+### 3. Client Evidence Submitted
 
-* GenLayer Intelligent Contracts
+![Client evidence](screenshots/03-client-evidence.png)
+
+### 4. Provider Evidence Submitted
+
+![Provider evidence](screenshots/04-provider-evidence.png)
+
+### 5. Dispute Resolution
+
+![Dispute resolution](screenshots/05-resolution-inconclusive.png)
+
+The demo resulted in an `INCONCLUSIVE` resolution because the submitted claims did not contain sufficient supporting records to determine which party was correct.
+
+## Source Code
+
+The contract source code is available in:
+
+[`ai_service_quality_dispute_resolver.py`](ai_service_quality_dispute_resolver.py)
+
+## Disclaimer
+
+The contract demonstrates AI-assisted dispute resolution. An AI-generated outcome is not a guarantee that the underlying claims are factually true. The quality of the outcome depends on the evidence submitted and the adjudication process.
+
+## Built With
+
 * Python
-* GenLayer Studio
-
-## Project Status
-
-Prototype tested in GenLayer Studio.
-
-This project is an experimental implementation and is not intended for production use without further testing and security review.
-
-## Author
-
-Built as part of my GenLayer learning and building journey.
-
-## License
-
-MIT
+* GenLayer Intelligent Contracts
