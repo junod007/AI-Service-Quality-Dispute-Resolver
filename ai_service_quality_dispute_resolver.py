@@ -3,7 +3,6 @@
 from genlayer import *
 import typing
 
-
 class AIServiceQualityDisputeResolver(gl.Contract):
 
     client: Address
@@ -177,9 +176,7 @@ class AIServiceQualityDisputeResolver(gl.Contract):
         # --------------------------------------------------
         # AI DISPUTE EVALUATION
         # --------------------------------------------------
-
         def evaluate_dispute() -> str:
-
             prompt = f"""
 You are evaluating a service-quality dispute.
 
@@ -226,7 +223,6 @@ Return exactly this format:
 DECISION: <CLIENT_FAVORED | PROVIDER_FAVORED | INCONCLUSIVE>
 REASON: <short factual explanation>
 """
-
             return gl.nondet.exec_prompt(prompt).strip()
 
         # --------------------------------------------------
