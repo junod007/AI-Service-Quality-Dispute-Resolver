@@ -1,3 +1,4 @@
+
 # AI Service Quality Dispute Resolver
 
 An AI-powered service quality dispute resolution Intelligent Contract built with [GenLayer](https://genlayer.com/).
@@ -10,56 +11,60 @@ The contract supports a dispute workflow in which the client opens a dispute, bo
 
 ## Features
 
-* Client-authorized dispute opening
-* Separate client and provider evidence submission
-* Evidence submission restricted to the corresponding party
-* AI-assisted dispute evaluation
-* Explicit `INCONCLUSIVE` outcome when the evidence is insufficient
-* Finalized dispute outcomes cannot be reset or overwritten through the dispute workflow
+- Client-authorized dispute opening
+- Separate client and provider evidence submissions
+- Sender validation for evidence ownership
+- AI-based dispute evaluation
+- On-chain dispute status and resolution tracking
+- Finalized outcomes protected from being reopened or overwritten
 
 ## Dispute Workflow
 
-1. The client opens a dispute.
-2. The client submits evidence.
-3. The provider submits evidence.
-4. The contract evaluates the submitted evidence.
-5. The contract records the resolution and reasoning.
+1. Deploy the Intelligent Contract.
+2. The client opens a dispute.
+3. The client submits evidence.
+4. The provider submits evidence.
+5. The contract evaluates both parties' submissions.
+6. The resolution and reasoning are stored on-chain.
 
-## Evidence & Demo
+## Execution Evidence
 
-### 1. Contract Deployed
+Screenshots below document the contract deployment and execution on GenLayer Studio.
 
-![Contract deployed](screenshots/01-contract-deployed.png)
+### 1. Contract Deployment
+
+![Contract deployment](screenshots/01-deploy-success.png)
 
 ### 2. Dispute Opened
 
-![Dispute opened](screenshots/02-dispute-opened.png)
+![Dispute opened](screenshots/02-open-dispute-finalized.png)
 
 ### 3. Client Evidence Submitted
 
-![Client evidence](screenshots/03-client-evidence.png)
+![Client evidence submitted](screenshots/03-client-evidence-finalized.png)
 
 ### 4. Provider Evidence Submitted
 
-![Provider evidence](screenshots/04-provider-evidence.png)
+![Provider evidence submitted](screenshots/04-provider-evidence-finalized.png)
 
 ### 5. Dispute Resolution
 
-![Dispute resolution](screenshots/05-resolution-inconclusive.png)
+![Dispute resolution finalized](screenshots/05-resolve-dispute-finalized.png)
 
-The demo resulted in an `INCONCLUSIVE` resolution because the submitted claims did not contain sufficient supporting records to determine which party was correct.
+### 6. On-chain Transaction History
 
-## Source Code
+![GenLayer Explorer transactions](screenshots/06-explorer-transactions.png)
 
-The contract source code is available in:
+## Contract
 
-[`ai_service_quality_dispute_resolver.py`](ai_service_quality_dispute_resolver.py)
+Source code: [`ai_service_quality_dispute_resolver.py`](ai_service_quality_dispute_resolver.py)
 
-## Disclaimer
+## Notes
 
-The contract demonstrates AI-assisted dispute resolution. An AI-generated outcome is not a guarantee that the underlying claims are factually true. The quality of the outcome depends on the evidence submitted and the adjudication process.
+The AI resolution is based on the evidence submitted to the contract. The contract records the adjudication result and reasoning; it does not independently verify off-chain claims or guarantee that submitted evidence is truthful.
 
 ## Built With
 
-* Python
-* GenLayer Intelligent Contracts
+- Python
+- GenLayer Intelligent Contracts
+- GenLayer Studio
